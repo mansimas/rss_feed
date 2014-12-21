@@ -1,18 +1,18 @@
 Rss Feed
 ============
 
-Used: Twitter bootstrap design pattern
+**Used: Twitter bootstrap design pattern**
 
-Instructions:
+**Instructions:**
 
 
 * Visit the website: http://mansimrssfeed.herokuapp.com/
-* Input "Rss Url" 
-* Input Category (any word in any title)
+* Input "Rss Url" (for example: "http://www.nfq.lt/rss")
+* Input Category (for example: "studentai")
 * Submit the form
 
 
-Or
+**Or**
 
 * Install Ruby on Rails on your mashine
 * Download archived rss_test file
