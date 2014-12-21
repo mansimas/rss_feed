@@ -1,0 +1,46 @@
+<h2 class="text-center">Listing feeds</h2>
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Website</th>
+      <th>Category</th>
+		<th>Updated at</th>
+		<th>News count</th>
+		<th>Last news</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feeds.each do |feed| %>
+      <tr>
+        <td><%= link_to feed.title, "http://www.#{feed.title}", target: '_blank', :class => "btn btn-link" %></td>
+        <td><%= feed.category %></td>
+		  <td><%= feed.updated_at.to_formatted_s(:db) %></td>
+		  <td class="text-center"><%= Item.where(feed_id: feed.id).count %></td>
+		  <% if Item.where(feed_id: feed.id).count != 0 %>
+		  <td><%= link_to Item.where(feed_id: feed.id).first.title, 
+		  Item.where(feed_id: feed.id).first.link, target: '_blank', :class => "btn btn-link" %></td>
+		  <% else %>
+		  <td>no news</td>
+		  <% end %>
+        <td><%= link_to 'Show', feed, :class => "btn btn-success" %></td>
+        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_for :feed do |f| %>
+ 		 <p>
+  		  <strong> rss Url </strong><br>
+  		  <%= f.text_field :url %>
+ 		 </p>
+ 		 <p>
+  		  <strong> Category </strong><br>
+  		  <%= f.text_field :title %>
+ 		 </p>
+ 		  <%= f.submit 'Create feed', :class => "btn btn-primary" %>
+ 		 <% end %>
+<br>
