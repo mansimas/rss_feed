@@ -1,8 +1,6 @@
 Rss Feed
 ============
 
-**Used: Twitter bootstrap design pattern**
-
 **Instructions:**
 
 
